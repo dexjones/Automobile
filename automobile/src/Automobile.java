@@ -36,7 +36,8 @@ try:
     color = color
     year = year
     mileage = mileage
-catch: print exception message
+catch:
+    print exception message
 }
 
 public addAutomobile(Automobile automobile) {
@@ -55,11 +56,18 @@ catch:
 return string array
 }
 public removeAutomobile(int vehicle) {
- remove vehicle from array[vehicle]
+try:
+    remove vehicle from array[vehicle]
+catch:
+    print exception message
 }
+
 public updateVehicle (vehicle) {
-add new information for vehicle from user
-set new information for vehicle
+try:
+    add new information for vehicle from user
+    set new information for vehicle
+catch:
+    print exception message
 }
 
  */
