@@ -1,3 +1,5 @@
+import java.util.*;
+
 /*
 Written by Dexter Jones
 
@@ -47,7 +49,7 @@ catch:
     print exception message
 }
 
-public String listAutomobiles(Array of automobile information) {
+public String viewAutomobiles(Array of automobile information) {
 try:
     for length of automobile array
         vehicle information added
@@ -72,4 +74,61 @@ catch:
 
  */
 public class Automobile {
+    private String make;
+    private String model;
+    private String color;
+    private int year;
+    private int mileage;
+    private static ArrayList<Automobile> vehicleList = new ArrayList<>();
+
+    public Automobile() { // default constructor
+        this.make = "";
+        this.model = "";
+        this.color = "";
+        this.year = 0;
+        this.mileage = 0;
+    }
+    public Automobile(String make, String model, String color, int year, int mileage) { // parameterized constructor
+        this.make = make;
+        this.model = model;
+        this.color = color;
+        this.year = year;
+        this.mileage = mileage;
+    }
+    public static void addVehicle(Automobile automobile) {
+        vehicleList.add(automobile);
+    }
+    public static String[] viewVehicle() {
+        String[] vehicleInfo = new String[vehicleList.size()];
+        int num = 0;
+        for (Automobile automobile : vehicleList) {
+            vehicleInfo[num++] = automobile.toString();
+            System.out.println(automobile.toString());
+        }
+        return vehicleInfo;
+    }
+    public static void removeVehicle(Automobile automobile) {
+        vehicleList.remove(automobile);
+    }
+    public void updateVehicle(String make, String model, String color, int year, int mileage) {
+        if (make != null && !make.isEmpty()) {
+            this.make = make;
+        }
+        if (model != null && !model.isEmpty()) {
+            this.model = model;
+        }
+        if (color != null && !color.isEmpty()) {
+            this.color = color;
+        }
+        if ( year > 0) {
+            this.year = year;
+        }
+        if (mileage >= 0) {
+            this.mileage = mileage;
+        }
+    }
+    public String toString() { // method for formatting object automobile
+        return "Make: " + make + ", Model: " + model + ", Color: " + color + ", Year: " + year + ", Mileage: " + mileage;
+    }
+
 }
