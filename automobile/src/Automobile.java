@@ -88,6 +88,7 @@ public class Automobile {
         this.color = "";
         this.year = 0;
         this.mileage = 0;
+        this.id = 0;
     }
     public Automobile(String make, String model, String color, int year, int mileage) { // parameterized constructor
         this.make = make;
@@ -95,6 +96,7 @@ public class Automobile {
         this.color = color;
         this.year = year;
         this.mileage = mileage;
+        this.id += 1;
     }
     /*public static void addVehicle(Automobile automobile) {
         vehicleList.add(automobile);
@@ -162,7 +164,7 @@ public class Automobile {
         }
     }
     public String toString() { // method for formatting object automobile
-        return "Make: " + make + ", Model: " + model + ", Color: " + color + ", Year: " + year + ", Mileage: " + mileage;
+        return "ID: " + id + "- Make: " + make + ", Model: " + model + ", Color: " + color + ", Year: " + year + ", Mileage: " + mileage;
     }
 
 }

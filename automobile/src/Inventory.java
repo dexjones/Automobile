@@ -5,7 +5,7 @@ public class Inventory {
     public Inventory() { // default constructor
         vehicles = new ArrayList<Automobile>();
     }
-    public void addVehicle(Automobile a) {
+    public static void addVehicle(Automobile a) {
         vehicles.add(a);
     }
     public static String[] viewVehicle() {
@@ -17,10 +17,15 @@ public class Inventory {
         }
         return vehicleInfo;
     }
-    public static void removeVehicle(Automobile a) {
-        vehicles.remove(a);
+    public static void removeVehicle(int id) {
+        for (Automobile automobile : vehicles) {
+            if (automobile.getId() == id) {
+                vehicles.remove(id);
+            }
+        }
+
     }
-    public boolean updateVehicle(int id, String make, String model, String color, int year, int mileage) {
+    public static boolean updateVehicle(int id, String make, String model, String color, int year, int mileage) {
         for (Automobile automobile : vehicles) {
             if (automobile.getId() == id) {
                 automobile.updateAttributes(make, model, color, year, mileage);
