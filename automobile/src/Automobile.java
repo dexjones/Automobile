@@ -79,6 +79,7 @@ public class Automobile {
     private String color;
     private int year;
     private int mileage;
+    private int id;
     private static ArrayList<Automobile> vehicleList = new ArrayList<>();
 
     public Automobile() { // default constructor
@@ -95,7 +96,7 @@ public class Automobile {
         this.year = year;
         this.mileage = mileage;
     }
-    public static void addVehicle(Automobile automobile) {
+    /*public static void addVehicle(Automobile automobile) {
         vehicleList.add(automobile);
     }
     public static String[] viewVehicle() {
@@ -109,22 +110,55 @@ public class Automobile {
     }
     public static void removeVehicle(Automobile automobile) {
         vehicleList.remove(automobile);
+    }*/
+    public int getId() {
+        return id;
     }
-    public void updateVehicle(String make, String model, String color, int year, int mileage) {
+    public String getMake() {
+        return this.make;
+    }
+    public String getModel() {
+        return this.model;
+    }
+    public String getColor() {
+        return this.color;
+    }
+    public int getYear() {
+        return this.year;
+    }
+    public int getMileage() {
+        return this.year;
+    }
+    public void setMake(String make) {
+        this.make = make;
+    }
+    public void setModel(String model) {
+        this.model = model;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
+    public void updateAttributes(String make, String model, String color, int year, int mileage) {
         if (make != null && !make.isEmpty()) {
-            this.make = make;
+            setMake(make);
         }
         if (model != null && !model.isEmpty()) {
-            this.model = model;
+            setModel(model);
         }
         if (color != null && !color.isEmpty()) {
-            this.color = color;
+            setColor(color);
         }
         if ( year > 0) {
-            this.year = year;
+            setYear(year);
         }
         if (mileage >= 0) {
-            this.mileage = mileage;
+            setMileage(mileage);
         }
     }
     public String toString() { // method for formatting object automobile

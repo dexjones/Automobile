@@ -4,7 +4,7 @@ public class Main {
         Scanner scnr = new Scanner(System.in);
         boolean b = false;
         String make, model, color;
-        int year = 0, mileage = 0, choice = 0;
+        int year = 0, mileage = 0, choice = 0, update = 0;
 
         System.out.println("Dealership Inventory Program\n----------------------------------");
         System.out.println("*Main Menu*\n1: Add Vehicle\n2: Update Vehicle\n3: Delete Vehicle\n4: List Vehicle\n5: Export File\n6: End Program");
@@ -22,7 +22,7 @@ public class Main {
             }
             b = false; // reset value
             switch (choice) {
-                case 1:
+                case 1: // Add Vehicle
                     System.out.println("-----------------------------------");
                     System.out.print("Enter the make of the vehicle: ");
                     make = scnr.nextLine();
@@ -54,6 +54,18 @@ public class Main {
                         }
                     }
                     Automobile a = new Automobile(make, model, color, year, mileage);
+                    Automobile.addVehicle(a);
+                    System.out.println("\n**Vehicle added to inventory**\n");
+                    b = false; // reset value
+                case 2: // Update vehicle
+
+                    while (!b) {
+                        try {
+                            update = scnr.nextInt();
+                            assert update >= 0 && update <= a.viewVehicle().length;
+                            a.
+                        }
+                    }
             }
         }
     }
