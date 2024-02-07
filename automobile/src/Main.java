@@ -1,8 +1,10 @@
 import java.util.*;
+import java.io.*;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
-        boolean b = false;
+        boolean b = false, save = false;
         String make, model, color;
         String newMake, newModel, newColor;
         int year = 0, mileage = 0, choice = 0, update = 0, delete = 0;
@@ -45,6 +47,7 @@ public class Main {
                     Automobile a = new Automobile(make, model, color, year, mileage);
                     Inventory.addVehicle(a);
                     System.out.println("\n**Vehicle added to inventory**\n");
+                    save = false; // changes to list
                 case 2: // Update vehicle
                     Inventory.viewVehicle();
                     System.out.print("Enter the number ID of the vehicle you would like to update: ");
@@ -71,6 +74,7 @@ public class Main {
                     Inventory.updateVehicle(update, newMake, newModel, newColor, newYear, newMileage);
                     System.out.println("Updated vehicle...\n");
                     Inventory.viewVehicle();
+                    save = false; // changes to list
                 case 3: // Delete vehicle
                     Inventory.viewVehicle();
                     while (!scnr.hasNextInt()) {
@@ -87,6 +91,34 @@ public class Main {
                         }
                     }
                     Inventory.viewVehicle();
+                    save = false; // changes to list
+                case 4: // List vehicle list
+                    Inventory.viewVehicle();
+                case 5: // Export file
+                    Inventory.inventoryLog("inventory.txt");
+                    System.out.println("Inventory has been logged to inventory.txt in file directory.\n");
+                    save = true;
+                case 6: // End program - check to make sure vehicles saved on file before exiting
+                    if (!save) {
+                        System.out.print("The vehicle inventory file was never created/updated, save vehicle log before exiting?");
+                        while (!scnr.hasNextInt() && choice < 0 && choice > 1) {
+                            try {
+                                choice = scnr.nextInt();
+                            }
+                            catch (NumberFormatException e) {
+                                System.out.println("Invalid entry. Must enter a whole number");
+                            }
+                            catch (Exception e) {
+                                System.out.println("Invalid entry. Must enter 0 or 1");
+                            }
+                        }
+                        if (choice == 1) {
+                            Inventory.inventoryLog("inventory.txt");
+                            choice = 6;
+                            System.out.println("Inventory has been logged to inventory.txt in file directory.\n");
+                            System.out.println("Exiting, goodbye...");
+                        }
+                    }
             }
         }
     }
