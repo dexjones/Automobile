@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Inventory {
     private static ArrayList<Automobile> vehicles;
@@ -20,9 +21,12 @@ public class Inventory {
         return vehicleInfo;
     }
     public static void removeVehicle(int id) {
-        for (Automobile automobile : vehicles) {
+        Iterator<Automobile> iterator = vehicles.iterator();
+        while (iterator.hasNext()) {
+            Automobile automobile = iterator.next();
             if (automobile.getId() == id) {
-                vehicles.remove(id);
+                iterator.remove();
+                return;
             }
         }
     }

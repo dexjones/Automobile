@@ -80,7 +80,7 @@ public class Automobile {
     private int year;
     private int mileage;
     private int id;
-    private static ArrayList<Automobile> vehicleList = new ArrayList<>();
+    private static int idCounter = 0;
 
     public Automobile() { // default constructor
         this.make = "";
@@ -88,7 +88,7 @@ public class Automobile {
         this.color = "";
         this.year = 0;
         this.mileage = 0;
-        this.id = 0;
+        this.id = ++idCounter;
     }
     public Automobile(String make, String model, String color, int year, int mileage) { // parameterized constructor
         this.make = make;
@@ -96,23 +96,10 @@ public class Automobile {
         this.color = color;
         this.year = year;
         this.mileage = mileage;
-        this.id += 1;
+        this.id = ++idCounter;
     }
-    /*public static void addVehicle(Automobile automobile) {
-        vehicleList.add(automobile);
-    }
-    public static String[] viewVehicle() {
-        String[] vehicleInfo = new String[vehicleList.size()];
-        int num = 0;
-        for (Automobile automobile : vehicleList) {
-            vehicleInfo[num++] = automobile.toString();
-            System.out.println(automobile.toString());
-        }
-        return vehicleInfo;
-    }
-    public static void removeVehicle(Automobile automobile) {
-        vehicleList.remove(automobile);
-    }*/
+
+
     public int getId() {
         return id;
     }
@@ -164,7 +151,7 @@ public class Automobile {
         }
     }
     public String toString() { // method for formatting object automobile
-        return "ID: " + id + "- Make: " + make + ", Model: " + model + ", Color: " + color + ", Year: " + year + ", Mileage: " + mileage;
+        return String.format("ID# %d - Make: '%s', Model: '%s', Color: '%s', Year: %d, Mileage: %,d", id, make,model,color,year,mileage);
     }
 
 }
