@@ -2,10 +2,17 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
+    public static boolean isString(String s) { // user input validation - returns true if correct choices input
+        String val = s.toUpperCase();
+        if (val.equals("Y") || val.equals("N")) {
+            return true;
+        }
+        return false;
+    }
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
         boolean b = false, save = false;
-        String make = "", model = "", color = "", s;
+        String make = "", model = "", color = "", s, leave;
         String newMake, newModel, newColor;
         int year = 0, mileage = 0, choice = 0, update = 0, delete = 0;
         int newYear = 0, newMileage = 0;
@@ -144,7 +151,9 @@ public class Main {
                     save = false; // changes to list
                     break;
                 case 3: // Delete vehicle
+                    System.out.println("---------------------------------------");
                     Inventory.viewVehicle();
+                    System.out.println("---------------------------------------");
                     System.out.print("Which vehicle do you want to delete from the list? ID#:  ");
                         while (true) { // try user input until correct input given
                             s = scnr.nextLine();
@@ -181,12 +190,14 @@ public class Main {
                     break;
                 case 6: // End program - check to make sure vehicles saved on file before exiting
                     if (!save) {
-                        System.out.print("The vehicle inventory file was never created/updated, save vehicle log before exiting?");
+                        System.out.println("The vehicle inventory file was never created/updated, save vehicle log before exiting?");
+                        System.out.print("Enter 'Y' for yes, 'N' for no: ");
                         while (true) {
-                            s = scnr.nextLine();
                             try {
-                                choice = Integer.parseInt(s);
-                                break;
+                                leave = scnr.nextLine();
+                                if (isString(leave)) {
+                                    break;
+                                }
                             }
                             catch (NumberFormatException e) {
                                 System.out.println("Invalid entry. Must enter a whole number");
@@ -195,7 +206,7 @@ public class Main {
                                 System.out.println("Invalid entry. Must enter 0 or 1");
                             }
                         }
-                        if (choice == 1) {
+                        if (leave.equals("Y")) {
                             Inventory.inventoryLog("inventory.txt");
                             choice = 6;
                             System.out.println("Inventory has been logged to inventory.txt in file directory.\n");

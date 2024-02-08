@@ -46,7 +46,7 @@ public class Inventory {
             }
         }
         catch (IOException e) {
-            System.out.println("The file was not located. Please make sure a correct path and directory is created for file");
+            System.out.println("Error. Unable to write file.");
         }
     }
 }
