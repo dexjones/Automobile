@@ -24,11 +24,15 @@ update vehicle attributes method
 
 Automobile() - creates vehicle attributes and initializes vehicle // default constructor
 public Automobile() {
-make = ""
-model = ""
-color = ""
-year = 0
-mileage = 0
+try:
+    make = ""
+    model = ""
+    color = ""
+    year = 0
+    mileage = 0
+    id = ++id
+catch:
+    Print exception message
 }
 
 public Automobile(string make, string model, string color, int year, int mileage) { // parameterized constructor
@@ -38,40 +42,34 @@ try:
     color = color
     year = year
     mileage = mileage
+    id = ++id
 catch:
     print exception message
+}
+public int getId() {
+    return id
 }
 
-public addAutomobile(Automobile automobile) {
-try:
-    add automobile to array
-catch:
-    print exception message
+public void setMake(String make) {
+    this make = make
 }
-
-public String viewAutomobiles(Array of automobile information) {
-try:
-    for length of automobile array
-        vehicle information added
-catch:
-    print exception message
-return string array
+public void setModel(String model) {
+    this model = model
 }
-public removeAutomobile(int vehicle) {
-try:
-    remove vehicle from array[vehicle]
-catch:
-    print exception message
+public void setColor(String color) {
+    this color = color
 }
-
-public updateVehicle (vehicle) {
-try:
-    add new information for vehicle from user
-    set new information for vehicle
-catch:
-    print exception message
+public void setYear(int year) {
+    this year = year
 }
-
+public void setMileage(int mileage) {
+    this.mileage = mileage;
+}
+public void updateAttributes(String make, String model, String color, int year, int mileage) {
+    try:
+        set all attributes
+    catch:
+        print exception message
  */
 public class Automobile {
     private String make;
@@ -81,7 +79,7 @@ public class Automobile {
     private int mileage;
     private int id;
     private static int idCounter = 0;
-
+    int currentYear = Calendar.getInstance().get(Calendar.YEAR);
     public Automobile() { // default constructor
         this.make = "";
         this.model = "";
@@ -98,25 +96,8 @@ public class Automobile {
         this.mileage = mileage;
         this.id = ++idCounter;
     }
-
-
     public int getId() {
-        return id;
-    }
-    public String getMake() {
-        return this.make;
-    }
-    public String getModel() {
-        return this.model;
-    }
-    public String getColor() {
-        return this.color;
-    }
-    public int getYear() {
-        return this.year;
-    }
-    public int getMileage() {
-        return this.year;
+            return id;
     }
     public void setMake(String make) {
         this.make = make;
@@ -134,20 +115,26 @@ public class Automobile {
         this.mileage = mileage;
     }
     public void updateAttributes(String make, String model, String color, int year, int mileage) {
-        if (make != null && !make.isEmpty()) {
-            setMake(make);
+        try {
+            if (make != null && !make.isEmpty()) {
+                setMake(make);
+            }
+            if (model != null && !model.isEmpty()) {
+                setModel(model);
+            }
+            if (color != null && !color.isEmpty()) {
+                setColor(color);
+            }
+            if ( year >= 1885 && year <= (currentYear + 1)) {
+                setYear(year);
+            }
+            if (mileage >= 0) {
+                setMileage(mileage);
+            }
         }
-        if (model != null && !model.isEmpty()) {
-            setModel(model);
-        }
-        if (color != null && !color.isEmpty()) {
-            setColor(color);
-        }
-        if ( year > 0) {
-            setYear(year);
-        }
-        if (mileage >= 0) {
-            setMileage(mileage);
+        catch (Exception e) {
+            System.out.println("Error. Unable to update attributes.");
+            System.out.println(e.getMessage());
         }
     }
     public String toString() { // method for formatting object automobile
