@@ -1,0 +1,3 @@
+ID# 1 - Make: 'Ram', Model: '2500', Color: 'Grey', Year: 2022, Mileage: 15,214
+ID# 3 - Make: 'Dodge', Model: 'Caravan', Color: 'Black', Year: 1998, Mileage: 205,455
+ID# 4 - Make: 'Toyota', Model: '4Runner', Color: 'Red', Year: 2008, Mileage: 84,574
